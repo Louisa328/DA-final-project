@@ -26,6 +26,10 @@ DML estimates a causal effect of **θ = +0.010 (p < 0.0001, 95% CI: [0.006, 0.01
 | Felten et al. (2021) AIOE | AI Occupational Exposure scores for 774 occupations | https://github.com/AIOE-Data/AIOE |
 | O*NET Work Context | Occupation characteristics (autonomy, automation, etc.) | https://www.onetcenter.org/database.html |
 
+## Citation
+
+Felten, E., Raj, M., & Seamans, R. (2021). Occupational, industry, and geographic exposure to artificial intelligence: A novel dataset and its potential uses. *Strategic Management Journal*, 42(12), 2195–2217.
+
 ## Repository Structure
 
 ```text
@@ -41,7 +45,3 @@ DML estimates a causal effect of **θ = +0.010 (p < 0.0001, 95% CI: [0.006, 0.01
     ├── executive_summary.pdf
     ├── technical_report.pdf
     └── ai_methodology.pdf
-
-## Citation
-
-Felten, E., Raj, M., & Seamans, R. (2021). Occupational, industry, and geographic exposure to artificial intelligence: A novel dataset and its potential uses. *Strategic Management Journal*, 42(12), 2195–2217.
