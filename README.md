@@ -1,26 +1,33 @@
-# AI Exposure and the Shift to Self-Employment: A Causal Analysis
+# Does AI Exposure Cause Workers to Transition to Self-Employment?
 
-This repository contains a data-driven consulting project that investigates whether technological shocks from generative AI drive workers toward self-employment. This project is built to meet the requirements of the Spring 2026 Causal Inference Final, featuring a Double Machine Learning (DML) identification strategy and a Streamlit "What-If" dashboard.
+**ECON 5200 Applied Data Analytics in Economics — Final Project (Spring 2026)**
 
-## 1. Project Overview
-*   **Causal Question:** Does higher occupational AI exposure ($T$) cause a higher probability of self-employment ($Y$)? 
-*   **The Business Case:** We aim to distinguish whether "AI-ready" occupations simply have a higher baseline for solo work, or if AI tools are actively lowering the barrier to entry for self-employment.
+## Research Question
 
-## 2. Identification Strategy: Double Machine Learning (DML)
-A pure predictive approach is insufficient because it conflates inherent occupation amenability with the causal effect of AI tools. 
-*   **Methodology:** We use ML nuisance models to flexibly control for high-dimensional confounders, followed by a final linear stage to estimate the causal effect with cross-fitting.
-*   **Key Assumption:** **Conditional Independence.** We assume that after controlling for demographics and O*NET occupational characteristics (autonomy, independence, computer use), the residual AI exposure variation is uncorrelated with unobserved determinants of self-employment 
-*   **Robustness Check:** A **Placebo Test** is conducted using a pre-ChatGPT subsample (2021–2022) to validate the causal interpretation of the recent AI shock 
+Does higher occupational AI exposure cause higher probability of self-employment? We use Double Machine Learning (DML) to isolate the causal effect of AI exposure from occupation-level confounding.
 
-## 3. Dataset & Variables
-*   **Sources:** IPUMS CPS ASEC (2021–2024) integrated with Felten AIOE scores and O*NET occupational data.
-*   **Sample Size:** $N > 10,000$ observations.
-*   **Treatment (T):** AIOE score (continuous, 0–5.
-*   **Outcome (Y):** Self-employed (binary status).
-*   **Controls (X):** Age, sex, race, education, income, state, industry, and O*NET-specific job characteristics.
+## Key Finding (Preliminary)
 
-## 4. Repository Structure
-Following the "Clean Repo" standard, the project is organized as follows:
+DML estimates a causal effect of **θ = +0.010 (p < 0.0001, 95% CI: [0.006, 0.014])** — a 1-unit increase in AIOE raises self-employment probability by ~1 percentage point. Notably, this **reverses the sign** of the naive OLS estimate (-0.002), which is confounded by the fact that high-AIOE occupations tend to be corporate white-collar jobs with inherently low self-employment rates.
+
+## Identification Strategy
+
+- **Method:** Double Machine Learning — Chernozhukov et al. (2018), manual cross-fitted residualization
+- **Treatment:** AIOE score (Felten et al., 2021), aggregated to SOC 2-digit major group
+- **Outcome:** Self-employed (binary, from CPS CLASSWKR)
+- **Controls:** Age, sex, education years, log income, marital status, number of children
+- **Robustness (planned):** Pre-ChatGPT placebo test (2021–2022 vs 2023–2024)
+
+## Data Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| IPUMS CPS ASEC 2021–2024 | Individual-level microdata, N ≈ 274,000 employed workers aged 18–65 | https://cps.ipums.org |
+| Felten et al. (2021) AIOE | AI Occupational Exposure scores for 774 occupations | https://github.com/AIOE-Data/AIOE |
+| O*NET Work Context | Occupation characteristics (autonomy, automation, etc.) | https://www.onetcenter.org/database.html |
+
+## Repository Structure
+
 ```text
 ├── README.md               # Project overview and reproduction instructions
 ├── requirements.txt        # Python dependencies
@@ -34,3 +41,7 @@ Following the "Clean Repo" standard, the project is organized as follows:
     ├── executive_summary.pdf
     ├── technical_report.pdf
     └── ai_methodology.pdf
+
+## Citation
+
+Felten, E., Raj, M., & Seamans, R. (2021). Occupational, industry, and geographic exposure to artificial intelligence: A novel dataset and its potential uses. *Strategic Management Journal*, 42(12), 2195–2217.
