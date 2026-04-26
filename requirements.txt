@@ -1,11 +1,4 @@
 pandas
 numpy
-openpyxl
-statsmodels
-scipy
-scikit-learn
-econml
-matplotlib
-seaborn
 plotly
 streamlit
