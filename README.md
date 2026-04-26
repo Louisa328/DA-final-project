@@ -72,11 +72,10 @@ DA-final-project/
 │   │   ├── AIOE_DataAppendix.xlsx    # Felten et al. AIOE scores
 │   │   ├── Language Modeling AIOE and AIIE.xlsx
 │   │   └── Work Context.xlsx         # O*NET work context variables
-│   └── processed/                    # Cleaned/merged outputs
 ├── deliverables/
 │   └── app.py                        # Streamlit dashboard
 ├── notebooks/
-│   └── 5200-final-project.ipynb      # Main analysis notebook (Parts 0-7)
+│   └── 5200-final-project.ipynb      # Main analysis notebook 
 ├── src/
 │   ├── Correlation Heatmap.png
 │   ├── Self-Employment Rate by AIOE.png
